@@ -5,7 +5,7 @@ import * as types from "./actionTypes"
 export const login = (payload) => dispatch =>{
 
     dispatch({type: types.USER_LOGIN_REQUEST})
-    return axios.post('http://localhost:3001/signin', payload)
+    return axios.post('https://dummyecom.onrender.com/signin', payload)
     .then(r => {
         dispatch({type: types.USER_LOGIN_SUCCESS, payload: r.data.token})
             if(r.data.token !== undefined){
