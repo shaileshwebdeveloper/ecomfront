@@ -54,8 +54,6 @@ export const Navbar = () => {
 
   const [state, setState] = useState('Active')
 
-
-
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const navigate = useNavigate();
@@ -64,7 +62,7 @@ export const Navbar = () => {
 
   const isAuth =  useSelector(state =>  state.AuthReducer.isAuth)
   
-  // const token = useSelector(state =>  state.AuthReducer.token)
+  const token = useSelector(state =>  state.AuthReducer.token)
 
   // const googleToken =  useSelector(state =>  state.AuthReducer.googleToken)
 
@@ -72,16 +70,18 @@ export const Navbar = () => {
 
   // console.log("gooogle", googleToken)
 
+  // console.log("isAuth", isAuth)
+
 
   useEffect(() => {
 
-    if(isAuth){
+    if(token !== ""){
        navigate("/")
     }
 
-  }, [isAuth])
+  }, [token])
 
-//  console.log("isAuth", isAuth)
+ console.log("isAuth", isAuth)
   
 
   return (

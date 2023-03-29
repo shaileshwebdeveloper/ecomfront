@@ -5,8 +5,9 @@ import * as types from "./actionTypes"
 export const login = (payload) => dispatch =>{
 
     dispatch({type: types.USER_LOGIN_REQUEST})
-    return axios.post('https://dummyecom.onrender.com/signin', payload)
+    return axios.post('http://localhost:3001/signin', payload)
     .then(r => {
+        console.log(r)
         dispatch({type: types.USER_LOGIN_SUCCESS, payload: r.data.token})
             if(r.data.token !== undefined){
               localStorage.setItem("token", r.data.token)
@@ -15,7 +16,8 @@ export const login = (payload) => dispatch =>{
             else{
                alert("Please add valid email && password")
             }
-    }).catch(e => dispatch({type: types.USER_LOGIN_FAILURE}))
+    }).catch(e => {dispatch({type: types.USER_LOGIN_FAILURE})
+      console.log(e)})
 
 
 }

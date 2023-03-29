@@ -10,7 +10,7 @@ export const Profile = () => {
   
   useEffect(() => {
 
-    axios.get('https://dummyecom.onrender.com/profile',{
+    axios.get('http://localhost:3001/profile',{
       headers: {
        "Content-Type": "application/json",
        Authorization: `Bearer ${localStorage.getItem("token")}`,

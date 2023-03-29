@@ -52,7 +52,7 @@ export const Signup = () => {
          e.preventDefault()
 
         axios
-          .post( "https://dummyecom.onrender.com/signup", payload)
+          .post( "http://localhost:3001/signup", payload)
           .then((r) => console.log(r.data),  navigate("/signin"))
       };
     
