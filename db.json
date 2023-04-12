@@ -1,0 +1,84 @@
+{
+  "products": [
+    {
+      "_id": "643401782a826ef05f708a87",
+      "id": "1",
+      "img": "https://cdn.pixabay.com/photo/2013/07/12/19/00/polo-shirt-154158__340.png",
+      "productName": "Blue Shirt",
+      "price": 100,
+      "desc": "Some text",
+      "color": "Blue",
+      "__v": 0
+    },
+    {
+      "_id": "643402002a826ef05f708a89",
+      "id": "2",
+      "img": "https://cdn.pixabay.com/photo/2013/07/12/19/00/polo-shirt-154158__340.png",
+      "productName": "Black Shirt",
+      "price": 100,
+      "desc": "Some text",
+      "color": "Black",
+      "__v": 0
+    },
+    {
+      "_id": "64340225291a204e1784d26e",
+      "id": "3",
+      "img": "https://cdn.pixabay.com/photo/2013/07/12/19/00/polo-shirt-154158__340.png",
+      "productName": "Yellow Shirt",
+      "price": 10,
+      "desc": " Some text",
+      "color": "Yellow",
+      "__v": 0
+    },
+    {
+      "_id": "6434024950a319d2bd1a9e07",
+      "id": "4",
+      "img": "https://cdn.pixabay.com/photo/2013/07/12/19/00/polo-shirt-154158__340.png",
+      "productName": "pink Shirt",
+      "price": 20,
+      "desc": "Some text",
+      "color": "Pink",
+      "__v": 0
+    },
+    {
+      "_id": "6434025d50a319d2bd1a9e09",
+      "id": "5",
+      "img": "https://cdn.pixabay.com/photo/2013/07/12/19/00/polo-shirt-154158__340.png",
+      "productName": "red Shirt",
+      "price": 30,
+      "desc": " Some text",
+      "color": "Red",
+      "__v": 0
+    },
+    {
+      "_id": "6434026650a319d2bd1a9e0b",
+      "id": "6",
+      "img": "https://cdn.pixabay.com/photo/2013/07/12/19/00/polo-shirt-154158__340.png",
+      "productName": "indigo Shirt",
+      "price": 40,
+      "desc": "Some text",
+      "color": "Indigo",
+      "__v": 0
+    },
+    {
+      "_id": "6434026e50a319d2bd1a9e0d",
+      "id": "7",
+      "img": "https://cdn.pixabay.com/photo/2013/07/12/19/00/polo-shirt-154158__340.png",
+      "productName": "green Shirt",
+      "price": 100,
+      "desc": "Some text",
+      "color": "Green",
+      "__v": 0
+    },
+    {
+      "_id": "6434027950a319d2bd1a9e0f",
+      "id": "8",
+      "img": "https://cdn.pixabay.com/photo/2013/07/12/19/00/polo-shirt-154158__340.png",
+      "productName": "purple Shirt",
+      "price": 50,
+      "desc": "Some text",
+      "color": "Purple",
+      "__v": 0
+    }
+  ]
+}

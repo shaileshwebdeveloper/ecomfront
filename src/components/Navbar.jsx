@@ -14,7 +14,6 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState, useEffect} from "react";
-import { useIdleTimer } from "react-idle-timer";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "./Redux/auth/action";
@@ -52,7 +51,6 @@ const NavLink = ({ children }) => (
 
 export const Navbar = () => {
 
-  const [state, setState] = useState('Active')
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -124,6 +122,8 @@ export const Navbar = () => {
                   onClick={() => navigate("/addtocart")}
                 />
               </NavLink>
+
+
             </HStack>
 
             <Button

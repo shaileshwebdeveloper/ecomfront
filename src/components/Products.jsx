@@ -4,23 +4,28 @@ import { useEffect, useState } from "react";
 import { SimpleGrid } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, getproducts } from "./Redux/app/action";
+import { useSearchParams } from "react-router-dom";
 
 
 export const Products = () => {
 
-
+  const [searchParams] = useSearchParams()
   const products = useSelector(state => state.AppReducer.products)
   const cartProducts = useSelector(state =>  state.AppReducer.cartProducts)
 
   const dispatch =  useDispatch()
 
+
+
   useEffect(() => {
+
+ 
 
    dispatch(getproducts())
 
   }, [])
 
-  // console.log("products", products)
+  console.log("products", products)
   // console.log("addToCart", cartProducts)
 
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import {Button} from "@chakra-ui/react";
 
 export const AddToCart = () => {
 
@@ -21,6 +22,9 @@ export const AddToCart = () => {
 
 
     ))}
+
+
+    <Button>Place Order </Button>
 
     </>
 
