@@ -47,6 +47,12 @@ export const reducer = (oldState = initialState, action) => {
 
       }
 
+      case types.UPDATE_CART :
+        return{
+      ...oldState,
+      cartProducts : payload
+      }
+
     default:
       return oldState;
   }

@@ -5,6 +5,7 @@ export const GET_PRODUCTS_FAILURE = "GET_PRODUCTS_FAILURE";
 //*******************ADD TO CART ***************************//
 
 export const ADD_TO_CART = "ADD_TO_CART";
+export const UPDATE_CART = "UPDATE_CART"
 
 
 

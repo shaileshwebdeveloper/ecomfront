@@ -7,6 +7,7 @@ import { filterData, getproducts } from "./Redux/app/action";
 export const FilterComp = () => {
   const [color, setColor] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [filterData, setFilterData] =  useState([])
   const initialSortBy = searchParams.getAll("sortBy");
   const dispatch = useDispatch();
 
@@ -29,6 +30,7 @@ export const FilterComp = () => {
   };
 
   const handleFilter = (e) => {
+    
     const { checked } = e.target;
 
     if(checked){
@@ -39,6 +41,16 @@ export const FilterComp = () => {
     else{
       dispatch(getproducts())
     }
+    // const data = [...filterData]
+
+    // if(data.includes(e.target.value)){
+    //    data.splice(data.indexOf(e.target.value))
+    // }
+    // else{
+    //    data.push(e.target.value)
+    // }
+
+    // setFilterData(data)
 
 
   };

@@ -1,22 +1,30 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Flex } from "@chakra-ui/react";
 import { Quantity } from "./Quantity";
+import { addToCart, updateCart } from "./Redux/app/action";
 
 export const AddToCart = () => {
-  let cartProducts = useSelector((state) => state.AppReducer.cartProducts);
+
+  const dispatch = useDispatch()
+  const [total, setTotal] =  useState(0)
+   let cartProducts = useSelector((state) => state.AppReducer.cartProducts);
 
   const handleDelete = (id) => {
-    // console.log("id", id)
+   
+   let data = cartProducts.filter((item) => id !== item.id)
 
-    return (cartProducts = cartProducts.filter((item) => id !== item.id));
+   console.log("data", data)
+
+    dispatch(updateCart(data))
+    
   };
 
   useEffect(() => {
     console.log(cartProducts);
   }, [cartProducts]);
 
-  console.log("cartProducts", cartProducts);
+  // console.log("cartProducts", cartProducts);
 
   return (
     <>
@@ -26,10 +34,9 @@ export const AddToCart = () => {
           <h1>{item.productName}</h1>
           <h1>{item.price}</h1>
           <Quantity />
-          <button onClick={() => cartProducts.filter((e) => item.id !== e.id)}>
-            {" "}
-            Delete{" "}
-          </button>
+          <Button colorScheme='teal' size='sm' onClick={() => handleDelete(item.id)}>     
+            Delete
+          </Button>
         </Flex>
       ))}
 

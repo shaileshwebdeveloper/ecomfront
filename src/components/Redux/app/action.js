@@ -19,6 +19,12 @@ export const addToCart = (item) => (dispatch) => {
   dispatch({ type: types.ADD_TO_CART, payload: item });
 };
 
+export const updateCart = (item) => (dispatch) => {
+
+   dispatch({type : types.UPDATE_CART, payload : item})
+
+}
+
 
 export const filterData = (item) => (dispatch) => {
   console.log("filter k andar aa gaya ")
