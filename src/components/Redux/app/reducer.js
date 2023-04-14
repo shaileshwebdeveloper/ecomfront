@@ -1,49 +1,53 @@
-import * as types from './actionTypes'
-
+import * as types from "./actionTypes";
 
 const initialState = {
-    products : [],
-    cartProducts : [],
-    isLoading:  false,
-    isError  : false,
-}
+  products: [],
+  cartProducts: [],
+  isLoading: false,
+  isError: false,
+};
 
+export const reducer = (oldState = initialState, action) => {
+  const { type, payload } = action;
 
-export const reducer =  (oldState =  initialState, action) => {
+  switch (type) {
+    case types.GET_PRODUCTS_REQUEST:
+      return {
+        ...oldState,
+        isLoading: true,
+      };
 
-   const {type, payload} = action;
+    case types.GET_PRODUCTS_SUCCESS:
+      return {
+        ...oldState,
+        isLoading: false,
+        products: payload,
+        isError: false,
+      };
 
-   switch(type){
+    case types.GET_PRODUCTS_FAILURE:
+      return {
+        ...oldState,
+        isLoading: false,
+        products: [],
+        isError: true,
+      };
 
-       case types.GET_PRODUCTS_REQUEST:
-        return{
-            ...oldState,
-            isLoading :  true
-        }
+    case types.ADD_TO_CART:
+      return {
+        ...oldState,
+        cartProducts: [...oldState.cartProducts, payload],
+      };
 
-        case types.GET_PRODUCTS_SUCCESS:
-            return{
-                ...oldState,
-                isLoading :  false,
-                products: payload,
-                isError: false
-        }
+    case types.FILTER_DATA:
+      return{
+ 
+       ...oldState,
+       products : payload
 
-        case types.GET_PRODUCTS_FAILURE:
-            return{
-                ...oldState,
-                isLoading :  false,
-                products: [],
-                isError: true
-        }
-     
-        case types.ADD_TO_CART:
-            return{
-                ...oldState,
-                cartProducts : [...oldState.cartProducts, payload]
-            }
+      }
 
-     default:
-      return oldState
-   }
-}
+    default:
+      return oldState;
+  }
+};

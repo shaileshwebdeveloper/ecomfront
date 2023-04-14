@@ -13,12 +13,10 @@ import {
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "./Redux/auth/action";
-
-
 
 const Links = [
   {
@@ -46,21 +44,16 @@ const NavLink = ({ children }) => (
   </Link>
 );
 
-
-
-
 export const Navbar = () => {
-
-
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const navigate = useNavigate();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const isAuth =  useSelector(state =>  state.AuthReducer.isAuth)
-  
-  const token = useSelector(state =>  state.AuthReducer.token)
+  const isAuth = useSelector((state) => state.AuthReducer.isAuth);
+
+  const token = useSelector((state) => state.AuthReducer.token);
 
   // const googleToken =  useSelector(state =>  state.AuthReducer.googleToken)
 
@@ -70,17 +63,13 @@ export const Navbar = () => {
 
   // console.log("isAuth", isAuth)
 
-
   useEffect(() => {
-
-    if(token !== ""){
-       navigate("/")
+    if (token !== "") {
+      navigate("/");
     }
+  }, [token]);
 
-  }, [token])
-
- console.log("isAuth", isAuth)
-  
+  console.log("isAuth", isAuth);
 
   return (
     <>
@@ -122,21 +111,19 @@ export const Navbar = () => {
                   onClick={() => navigate("/addtocart")}
                 />
               </NavLink>
-
-
             </HStack>
 
             <Button
               colorScheme="red"
               variant="outline"
               onClick={() => {
-               navigate("/signup");
+                navigate("/signup");
               }}
             >
               SIGN UP
             </Button>
 
-            { (!isAuth) ? (
+            {!isAuth ? (
               <Button
                 colorScheme="red"
                 variant="outline"
@@ -166,11 +153,7 @@ export const Navbar = () => {
                   <MenuItem onClick={() => navigate("/profile")}>
                     Profile
                   </MenuItem>
-                  <MenuItem
-                    onClick={() => dispatch(logout())}
-                  >
-                    Logout
-                  </MenuItem>
+                  <MenuItem onClick={() => dispatch(logout())}>Logout</MenuItem>
                 </MenuList>
               </Menu>
             )}

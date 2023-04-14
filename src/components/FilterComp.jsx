@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { Text, Box} from "@chakra-ui/react";
-import { useSelector } from 'react-redux';
-import { useSearchParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Text, Box } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
+import { filterData, getproducts } from "./Redux/app/action";
 
 export const FilterComp = () => {
-
-  const [color, setColor] = useState([])
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [color, setColor] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
   const initialSortBy = searchParams.getAll("sortBy");
+  const dispatch = useDispatch();
 
   const [sortBy, setSortBy] = useState(initialSortBy[0] || "");
 
@@ -15,64 +16,55 @@ export const FilterComp = () => {
     setSortBy(e.target.value);
   };
 
-  const products = useSelector(state => state.AppReducer.products)
+  const products = useSelector((state) => state.AppReducer.products);
 
   // console.log("products", products)
 
   const handleAsc = () => {
-     return  products.sort((a, b) => a.price-b.price)
-  }
-
+    return products.sort((a, b) => a.price - b.price);
+  };
 
   const handleDesc = () => {
-    return  products.sort((a, b) => b.price-a.price)
- }
- 
-  
+    return products.sort((a, b) => b.price - a.price);
+  };
 
-const handleFilter = (e) => {
+  const handleFilter = (e) => {
+    const { checked } = e.target;
 
-
-  const newColor = [...color]
-
-
-  if(newColor.includes(e.target.value)){
-        newColor.splice(newColor.indexOf(e.target.value))
-  }
-  else{
-     newColor.push(e.target.value)
-  }
-  
-  setColor(newColor)
-
-}
-
-console.log(color)
-
-useEffect(() => {
-
- if(color || sortBy){
-    
-   let params  = {}
-   color && (params.color = color)
-   sortBy && (params.sortBy = sortBy);
-   setSearchParams(params)
-
- }
+    if(checked){
+      let data = products.filter((item) => item.color === e.target.value);
+       dispatch(filterData(data))
+      console.log("products", products)
+    }
+    else{
+      dispatch(getproducts())
+    }
 
 
-}, [color, setSearchParams, sortBy])
+  };
 
+  console.log(products);
+
+  useEffect(() => {
+    if (color || sortBy) {
+      let params = {};
+      color && (params.color = color);
+      sortBy && (params.sortBy = sortBy);
+      setSearchParams(params);
+    }
+  }, [color, setSearchParams, sortBy, products]);
 
   return (
-    <Box style={{ textAlign: "left"}}>
-      <Box style={{borderBottom : "0.2rem solid grey"}} mb="1rem">
-          <Text fontSize='xl' fontWeight="bold" mb="10px">LOCATIONS</Text>
+    <Box style={{ textAlign: "left" }}>
+      <Box style={{ borderBottom: "0.2rem solid grey" }} mb="1rem">
+        <Text fontSize="xl" fontWeight="bold" mb="10px">
+          LOCATIONS
+        </Text>
         <Box>
           <input
             type="checkbox"
             value="Madhya Pradesh"
-            style={{marginRight : "5px"}}
+            style={{ marginRight: "5px" }}
             onChange={handleFilter}
           />
           <label>Madhya Pradesh</label>
@@ -81,7 +73,7 @@ useEffect(() => {
           <input
             type="checkbox"
             value="Karnataka"
-            style={{marginRight : "5px"}}
+            style={{ marginRight: "5px" }}
             onChange={handleFilter}
           />
           <label>Karnataka</label>
@@ -90,37 +82,34 @@ useEffect(() => {
           <input
             type="checkbox"
             value="Uttar Pradesh"
-            style={{marginRight : "5px"}}
+            style={{ marginRight: "5px" }}
             onChange={handleFilter}
           />
           <label>Uttar Pradesh</label>
         </Box>
         <Box>
-          <input
-            type="checkbox"
-            value="Goa"
-            style={{marginRight : "5px"}}
-          />
+          <input type="checkbox" value="Goa" style={{ marginRight: "5px" }} />
           <label>Goa</label>
         </Box>
         <Box>
           <input
             type="checkbox"
             value="Maharashtra"
-            style={{marginRight : "5px", marginBottom : "1rem"}}
+            style={{ marginRight: "5px", marginBottom: "1rem" }}
           />
           <label>Maharashtra</label>
         </Box>
       </Box>
 
-
-      <Text fontSize='xl' fontWeight="bold" mb="10px">Color</Text>
-      <Box style={{borderBottom : "0.2rem solid grey"}} pb="1rem">
+      <Text fontSize="xl" fontWeight="bold" mb="10px">
+        Color
+      </Text>
+      <Box style={{ borderBottom: "0.2rem solid grey" }} pb="1rem">
         <Box>
           <input
             type="checkbox"
             value="Blue"
-            style={{marginRight : "5px"}}
+            style={{ marginRight: "5px" }}
             onChange={handleFilter}
           />
           <label>Blue</label>
@@ -129,7 +118,7 @@ useEffect(() => {
           <input
             type="checkbox"
             value="Red"
-            style={{marginRight : "5px"}}
+            style={{ marginRight: "5px" }}
             onChange={handleFilter}
           />
           <label>Red</label>
@@ -138,7 +127,7 @@ useEffect(() => {
           <input
             type="checkbox"
             value="Black"
-            style={{marginRight : "5px"}}
+            style={{ marginRight: "5px" }}
             onChange={handleFilter}
           />
           <label>Black</label>
@@ -147,25 +136,26 @@ useEffect(() => {
           <input
             type="checkbox"
             value="Green"
-            style={{marginRight : "5px"}}
+            style={{ marginRight: "5px" }}
             onChange={handleFilter}
           />
           <label>Green</label>
         </Box>
-        
       </Box>
 
-
-
-
-
-      <Text fontSize='xl' fontWeight="bold" mb="10px">SORT BY</Text>
-      <Box onChange={handleSort} style={{borderBottom : "0.2rem solid grey"}} mb="1rem">
+      <Text fontSize="xl" fontWeight="bold" mb="10px">
+        SORT BY
+      </Text>
+      <Box
+        onChange={handleSort}
+        style={{ borderBottom: "0.2rem solid grey" }}
+        mb="1rem"
+      >
         <input
-          type="radio"   
+          type="radio"
           value=""
           name="sortBy"
-          style={{marginRight : "5px"}}
+          style={{ marginRight: "5px" }}
         />
         <label>Relevance</label>
         <br />
@@ -175,7 +165,7 @@ useEffect(() => {
           value="asc"
           name="sortBy"
           onChange={handleAsc}
-          style={{marginRight : "5px"}}
+          style={{ marginRight: "5px" }}
         />
         <label>Low to High</label>
         <br />
@@ -185,10 +175,10 @@ useEffect(() => {
           value="desc"
           name="sortBy"
           onChange={handleDesc}
-          style={{marginRight : "5px", marginBottom : "1rem"}}
+          style={{ marginRight: "5px", marginBottom: "1rem" }}
         />
         <label>High to Low</label>
       </Box>
     </Box>
-  )
-}
+  );
+};

@@ -14,11 +14,11 @@ const firebaseConfig = {
   storageBucket: "dummyecom-f871f.appspot.com",
   messagingSenderId: "350976838381",
   appId: "1:350976838381:web:fc5fbfde746a6198e19ae4",
-  measurementId: "G-ZV41HPRQT5"
+  measurementId: "G-ZV41HPRQT5",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
-export {auth, provider}
+export { auth, provider };

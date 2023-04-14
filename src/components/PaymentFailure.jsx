@@ -1,14 +1,3 @@
-
-
-
-export const  PaymentFailure = () => {
-
-
-    return(
-     
-        <div></div>
-    
-    
-    
-    
-    )}
+export const PaymentFailure = () => {
+  return <div></div>;
+};

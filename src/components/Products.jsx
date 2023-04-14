@@ -7,30 +7,31 @@ import { addToCart, getproducts } from "./Redux/app/action";
 import { useSearchParams } from "react-router-dom";
 
 
+
+
+
 export const Products = () => {
 
-  const [searchParams] = useSearchParams()
-  const products = useSelector(state => state.AppReducer.products)
-  const cartProducts = useSelector(state =>  state.AppReducer.cartProducts)
 
-  const dispatch =  useDispatch()
+  const [searchParams] = useSearchParams();
+  const products = useSelector((state) => state.AppReducer.products);
+  const cartProducts = useSelector((state) => state.AppReducer.cartProducts);
 
 
+
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
 
- 
+    dispatch(getproducts());
 
-   dispatch(getproducts())
 
-  }, [])
+  }, []);
 
-  console.log("products", products)
+  console.log("products", products);
   // console.log("addToCart", cartProducts)
 
-
-
- 
 
   return (
     <>
@@ -42,7 +43,9 @@ export const Products = () => {
             <p className={styles.price}>₹ {item.price}</p>
             <p>{item.desc}</p>
             <p>
-              <button onClick={() => dispatch(addToCart(item))}>Add to Cart</button>
+              <button onClick={() => dispatch(addToCart(item))}>
+                Add to Cart
+              </button>
             </p>
           </div>
         ))}

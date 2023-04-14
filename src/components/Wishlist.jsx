@@ -1,9 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export const Wishlist = () => {
-
-    
-  return (
-    <div>Wishlist</div>
-  )
-}
+  return <div>Wishlist</div>;
+};

@@ -1,15 +1,3 @@
-
-
-
 export const PaymentSuccess = () => {
-
-
-return(
-
- <div>
-
-
-
-
- </div>
-)}
+  return <div></div>;
+};
