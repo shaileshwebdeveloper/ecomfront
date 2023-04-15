@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Text, Box } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { filterData, getproducts } from "./Redux/app/action";
+import {  filteredData, getproducts } from "./Redux/app/action";
 
 export const FilterComp = () => {
   const [color, setColor] = useState([]);
@@ -35,7 +35,7 @@ export const FilterComp = () => {
 
     if(checked){
       let data = products.filter((item) => item.color === e.target.value);
-       dispatch(filterData(data))
+       dispatch(filteredData(data))
       console.log("products", products)
     }
     else{

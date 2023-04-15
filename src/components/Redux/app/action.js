@@ -26,7 +26,7 @@ export const updateCart = (item) => (dispatch) => {
 }
 
 
-export const filterData = (item) => (dispatch) => {
+export const filteredData = (item) => (dispatch) => {
   console.log("filter k andar aa gaya ")
    dispatch({type: types.FILTER_DATA, payload : item})
 }
