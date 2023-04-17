@@ -23,8 +23,11 @@ export const AllRoutes = () => {
           </PrivateRoute>
         }
       ></Route>
+
+
       <Route path="/signup" element={<Signup />}></Route>
       <Route path="/signin" element={<Signin />}></Route>
+      
       <Route
         path="/profile"
         element={

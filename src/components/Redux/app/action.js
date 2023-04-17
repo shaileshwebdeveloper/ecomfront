@@ -20,13 +20,17 @@ export const addToCart = (item) => (dispatch) => {
 };
 
 export const updateCart = (item) => (dispatch) => {
-
-   dispatch({type : types.UPDATE_CART, payload : item})
-
-}
-
+  dispatch({ type: types.UPDATE_CART, payload: item });
+};
 
 export const filteredData = (item) => (dispatch) => {
-  console.log("filter k andar aa gaya ")
-   dispatch({type: types.FILTER_DATA, payload : item})
+  // console.log("filter k andar aa gaya ");
+  dispatch({ type: types.FILTER_DATA, payload: item });
+};
+
+
+export const wishlistCart = (item) => (dispatch) => {
+
+dispatch({type: types.ADD_TO_WISHLIST, payload : item})
+
 }

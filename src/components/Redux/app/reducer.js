@@ -5,6 +5,7 @@ const initialState = {
   cartProducts: [],
   isLoading: false,
   isError: false,
+  wishlist: []
 };
 
 export const reducer = (oldState = initialState, action) => {
@@ -40,17 +41,21 @@ export const reducer = (oldState = initialState, action) => {
       };
 
     case types.FILTER_DATA:
+      return {
+        ...oldState,
+        products: payload,
+      };
+
+    case types.UPDATE_CART:
+      return {
+        ...oldState,
+        cartProducts: payload,
+      };
+
+    case types.ADD_TO_WISHLIST:
       return{
- 
-       ...oldState,
-       products : payload
-
-      }
-
-      case types.UPDATE_CART :
-        return{
-      ...oldState,
-      cartProducts : payload
+        ...oldState,
+        wishlist : [...oldState.wishlist, payload]
       }
 
     default:

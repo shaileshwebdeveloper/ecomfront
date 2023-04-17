@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 
-export const Quantity = () => {
-  const [quantity, setQuantity] = useState(0);
-
+export const Quantity = ({ quantity, setQuantity }) => {
   return (
     <div>
       <button
         onClick={() => setQuantity(quantity - 1)}
-        disabled={quantity === 0}
+        disabled={quantity === 1}
       >
         -
       </button>

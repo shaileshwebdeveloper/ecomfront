@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Text, Box } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import {  filteredData, getproducts } from "./Redux/app/action";
+import { filteredData, getproducts } from "./Redux/app/action";
 
 export const FilterComp = () => {
+
+
   const [color, setColor] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [filterData, setFilterData] =  useState([])
   const initialSortBy = searchParams.getAll("sortBy");
   const dispatch = useDispatch();
-
-  const [sortBy, setSortBy] = useState(initialSortBy[0] || "");
+   const [sortBy, setSortBy] = useState(initialSortBy[0] || "");
 
   const handleSort = (e) => {
     setSortBy(e.target.value);
@@ -33,27 +33,18 @@ export const FilterComp = () => {
     
     const { checked } = e.target;
 
-    if(checked){
-      let data = products.filter((item) => item.color === e.target.value);
-       dispatch(filteredData(data))
-      console.log("products", products)
-    }
-    else{
-      dispatch(getproducts())
-    }
-    // const data = [...filterData]
+if(checked){
 
-    // if(data.includes(e.target.value)){
-    //    data.splice(data.indexOf(e.target.value))
-    // }
-    // else{
-    //    data.push(e.target.value)
-    // }
+  let data = products.filter((item) => item.color === e.target.value);
+  dispatch(filteredData(data));
+  console.log("products", products);
+ 
+}    
+else{
+  dispatch(getproducts());
+}
 
-    // setFilterData(data)
-
-
-  };
+};
 
   console.log(products);
 
@@ -149,6 +140,7 @@ export const FilterComp = () => {
             type="checkbox"
             value="Green"
             style={{ marginRight: "5px" }}
+            
             onChange={handleFilter}
           />
           <label>Green</label>
@@ -163,15 +155,7 @@ export const FilterComp = () => {
         style={{ borderBottom: "0.2rem solid grey" }}
         mb="1rem"
       >
-        <input
-          type="radio"
-          value=""
-          name="sortBy"
-          style={{ marginRight: "5px" }}
-        />
-        <label>Relevance</label>
-        <br />
-
+  
         <input
           type="radio"
           value="asc"
